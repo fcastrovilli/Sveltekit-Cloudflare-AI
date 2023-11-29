@@ -1,38 +1,33 @@
-# create-svelte
+# Sveltekit Cloudflare Ai Web Api Demo
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This is a set of examples for creating your own Ai assistant directly in your browser.
 
-## Creating a project
+Currently included Ai tools you will find running this project:
 
-If you're seeing this, you've probably already done this step. Congrats!
+- text to image (Stable Diffusion XL)
+- chat (Llama)
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+You should have a [Cloudflare](https://dash.cloudflare.com/sign-up) account to generate a "CF_API_TOKEN" and retrieve your "CF_USER_ID".
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+[Here](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) is a guide for api token creation.
 
-## Developing
+[This](https://developers.cloudflare.com/workers-ai/get-started/rest-api/#get-started---workers-ai-api) is for a deep dive into Cloudflare's Workers docs.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## How to use
 
-```bash
-npm run dev
+To run this project simply clone it to your device.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+Then rename ".env.example" to ".env" and fullfill it with your fresh Cloudflare data.
 
-## Building
-
-To create a production version of your app:
+Run
 
 ```bash
-npm run build
+# to install dependencies
+pnpm install
+
+# to run the project
+pnpm run dev
+
+# to build it
+pnpm run build
 ```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
