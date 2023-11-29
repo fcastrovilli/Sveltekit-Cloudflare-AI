@@ -13,6 +13,12 @@ export async function run(model: string, input: any) {
 		const result = await response.blob();
 
 		return result;
+	} else if (response.headers.get('content-type')?.includes('text/event-stream')) {
+		// return new Response(response.body, { headers: { 'content-type': 'text/event-stream' } });
+		const result = new Response(response.body, {
+			headers: { 'content-type': 'text/event-stream' }
+		});
+		return result;
 	} else {
 		const result = await response.json();
 		return result;
