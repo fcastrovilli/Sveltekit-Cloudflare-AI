@@ -9,9 +9,9 @@ Currently included Ai tools you will find running this project:
 
 You should have a [Cloudflare](https://dash.cloudflare.com/sign-up) account to generate a "CF_API_TOKEN" and retrieve your "CF_USER_ID".
 
-[Here](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) is a guide for api token creation.
+Full Cloudflare Workers AI docs: [Link](https://developers.cloudflare.com/workers-ai/)
 
-[This](https://developers.cloudflare.com/workers-ai/get-started/rest-api/#get-started---workers-ai-api) is for a deep dive into Cloudflare's Workers docs.
+Create Api Token: [Link](https://developers.cloudflare.com/workers-ai/get-started/rest-api/#1-get-an-api-token)
 
 ## How to use
 
