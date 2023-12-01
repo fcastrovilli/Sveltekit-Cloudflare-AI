@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { SSE } from 'sse.js';
+	import { marked } from 'marked';
 	let prompt: string = '';
 	let loading = false;
 	let answer: string = '';
+	// import { CodeBlock } from '@skeletonlabs/skeleton';
 	let character: string =
-		'You are a sad assistant, you are concise and use only few selected emojis.';
+		'Style all your responses for markdown formatting. Feel free to use emojis, spacing, font style and text sizes to help make some clear responses.';
 	let chatMessages: { role: string; content: string }[] = [];
 	$: chatMessages;
 	$: console.log(chatMessages);
@@ -12,8 +14,8 @@
 		loading = true;
 		chatMessages = [...chatMessages, { role: 'user', content: prompt }];
 		const newMessage = [
-			{ role: 'user', content: prompt }
-			// { role: 'system', content: character }
+			{ role: 'user', content: prompt },
+			{ role: 'system', content: character }
 		];
 
 		const eventSource = new SSE('/api/chat', {
@@ -57,18 +59,18 @@
 		{#each chatMessages as message}
 			{#if message.role === 'user'}
 				<div class="card variant-outline-primary p-4 w-3/4 float-right">
-					<p>{message.content}</p>
+					<p>{@html marked.parse(message.content)}</p>
 				</div>
 			{:else if message.role === 'assistant'}
 				<div class="card variant-outline-success p-4 w-3/4 float-left">
-					<p>{message.content}</p>
+					<p>{@html marked.parse(message.content)}</p>
 				</div>
 			{/if}
 		{/each}
 
 		{#if !loading && answer !== ''}
 			<div class="card variant-outline-success p-4 w-3/4 float-left">
-				<p>{answer}</p>
+				<p>{@html marked.parse(answer)}</p>
 			</div>
 		{:else if loading}
 			<p class="card variant-outline-success p-4 w-3/4 float-left">Loading...</p>
