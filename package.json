@@ -39,6 +39,7 @@
   "type": "module",
   "dependencies": {
     "@floating-ui/dom": "1.5.3",
+    "marked": "^11.0.0",
     "sse.js": "^2.0.2"
   }
 }
