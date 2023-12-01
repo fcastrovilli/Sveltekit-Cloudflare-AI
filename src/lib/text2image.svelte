@@ -1,21 +1,27 @@
 <script lang="ts">
 	let prompt: string = '';
 	let image: HTMLImageElement;
+	$: image;
 	function text2image() {
-		fetch('/api/text2img', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				prompt: prompt
+		try {
+			fetch('/api/text2img', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					prompt: prompt
+				})
 			})
-		})
-			.then((res) => res.blob())
-			.then((blob) => {
-				const url = URL.createObjectURL(blob);
-				image.src = url;
-			});
+				.then((res) => res.blob())
+				.then((blob) => {
+					const url = URL.createObjectURL(blob);
+					console.log(url);
+					image.src = url;
+				});
+		} catch (error) {
+			console.log(error);
+		}
 	}
 </script>
 
